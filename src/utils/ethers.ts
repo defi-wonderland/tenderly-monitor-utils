@@ -17,10 +17,10 @@ export const decodeEvent = (
     throw Error(`${eventName} Event missing`);
   }
 
-  const data = eventLog.data == '0x' ? [] : ethers.utils.defaultAbiCoder.decode(decodeParams, eventLog.data);
+  const data = eventLog.data === '0x' ? [] : ethers.utils.defaultAbiCoder.decode(decodeParams, eventLog.data);
 
   return {
-    data: data,
+    data,
     address: eventLog.address,
   };
 };

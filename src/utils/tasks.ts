@@ -93,7 +93,7 @@ export const addAndTagChildContractTask = (tag: string, childAddressEventIndex: 
 
     for (const log of parsedLogs) {
       const { decodedEvent, networkId } = processLog(log, txEvent, ifc);
-      if (decodedEvent.data.length > childAddressEventIndex) {
+      if (decodedEvent.data[childAddressEventIndex]) {
         await api.addAndTagNewContract(decodedEvent.data[childAddressEventIndex], tag, networkId, errorHandlerDiscordWebhook);
       }
     }
